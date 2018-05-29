@@ -1,9 +1,9 @@
 <template>
     <div>
         <div id="container">
-            <navi></navi>
+            <navi @btn-clicked="btn_clicked"></navi>
             <input-modal v-if="isAddButtonClicked"></input-modal>
-            <sect></sect>
+            <sect ref="input"></sect>
             <asides v-if="isConfigButtonClicked"></asides>
         </div>
     </div>
@@ -24,7 +24,22 @@
                 isConfigButtonClicked:false,
             }
         },
-        methods:{}
+        methods:{
+            btn_clicked:function (value) {
+                if(value === 'add'){
+                    this.isAddButtonClicked = true;
+                }
+                else if(value === 'config'){
+                    this.isConfigButtonClicked = true;
+                }
+                else{
+                    alert('Unhandled Event!');
+                }
+            },
+            user_input:function (input) {
+                this.$refs.input.addContent(input);
+            }
+        }
     }
 </script>
 
@@ -34,6 +49,7 @@
         text-align: center;
     }
     #container{
+        height: 700px;
         width: 400px;
         background: honeydew;
     }

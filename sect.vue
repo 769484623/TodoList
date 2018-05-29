@@ -23,6 +23,20 @@
             }
         },
         methods:{
+            addContent:function (value) {
+                try{
+                    this.options.forEach((label,index)=>{
+                        if(label === value){
+                            throw '待完成事件已经存在了！'
+                        }
+                    });
+                }
+                catch (e) {
+                    alert(e);
+                    return ;
+                }
+                this.options.push(value);
+            }
         }
     }
 </script>
@@ -34,6 +48,7 @@
         text-align: center;
     }
     #sect{
+        text-align: left;
         height: 600px;
     }
 </style>
