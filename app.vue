@@ -1,10 +1,10 @@
 <template>
     <div>
+        <input-modal ref="event" @add-event="user_input"></input-modal>
         <div id="container">
             <navi @btn-clicked="btn_clicked"></navi>
-            <input-modal v-if="isAddButtonClicked"></input-modal>
-            <sect ref="input"></sect>
             <asides v-if="isConfigButtonClicked"></asides>
+            <sect ref="input"></sect>
         </div>
     </div>
 </template>
@@ -20,17 +20,16 @@
         components: {InputModal, Sect, Asides, Navi},
         data:function() {
             return {
-                isAddButtonClicked:false,
                 isConfigButtonClicked:false,
             }
         },
         methods:{
             btn_clicked:function (value) {
                 if(value === 'add'){
-                    this.isAddButtonClicked = true;
+                    this.$refs.event.showModal();
                 }
                 else if(value === 'config'){
-                    this.isConfigButtonClicked = true;
+                    this.isConfigButtonClicked = !this.isConfigButtonClicked;
                 }
                 else{
                     alert('Unhandled Event!');
@@ -51,6 +50,6 @@
     #container{
         height: 700px;
         width: 400px;
-        background: honeydew;
+        background: white;
     }
 </style>
