@@ -12,7 +12,7 @@
                     <input type="text" v-model="additionInfo"/>
                 </div>
                 <br><br>
-                <input type="submit" @click="submitButton"/>
+                <input type="button" @click="submitButton" value="提交"/>
             </form>
         </div>
     </div>
